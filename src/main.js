@@ -73,9 +73,6 @@ const initEvents = () => {
     renderCartItems(); // Refrescamos la lista cada vez que se abre
   });
 
-  // closeCartBtn?.addEventListener("click", () => {
-  //   cartModal.classList.remove("open");
-  // });
 
   cartItemsContainer?.addEventListener("click", (e) => {
     if (e.target.classList.contains("btn-remove")) {
