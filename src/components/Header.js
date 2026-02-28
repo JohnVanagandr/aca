@@ -5,7 +5,7 @@ export const Header = (cartCount = 0) => {
     <header class="main-header">
       <div class="header-container">
         <div class="logo">
-          <h1>SENA Digital Store</h1>
+          <h1>ACA</h1>
         </div>
         <nav class="main-nav">
           <ul>
