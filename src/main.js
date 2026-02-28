@@ -1,4 +1,5 @@
 import "./style.css";
+import 'boxicons'
 import { getProducts } from "./services/api.js";
 import { ProductList } from "./components/ProductList.js";
 import { Filter } from "./components/Filter.js";
@@ -34,7 +35,7 @@ const renderApp = async () => {
     ${Footer()}
     ${ScrollTop()}
   `;
-  
+
   app.innerHTML += CartModal();
   // 4. VINCULAR EVENTOS (Solo después de que el HTML existe)
   initEvents();
@@ -50,24 +51,24 @@ const initEvents = () => {
   const cartItemsContainer = document.querySelector("#cart-items-container");
   const cartOverlay = document.querySelector("#cart-overlay");
 
-    const openCart = () => {
-      cartModal.classList.add("open");
-      cartOverlay.classList.add("show");
-      document.body.style.overflow = "hidden"; // Evita el scroll del fondo
-      renderCartItems();
-    };
+  const openCart = () => {
+    cartModal.classList.add("open");
+    cartOverlay.classList.add("show");
+    document.body.style.overflow = "hidden"; // Evita el scroll del fondo
+    renderCartItems();
+  };
 
-    // Función para cerrar
-    const closeCart = () => {
-      cartModal.classList.remove("open");
-      cartOverlay.classList.remove("show");
-      document.body.style.overflow = "auto"; // Devuelve el scroll al body
-    };
+  // Función para cerrar
+  const closeCart = () => {
+    cartModal.classList.remove("open");
+    cartOverlay.classList.remove("show");
+    document.body.style.overflow = "auto"; // Devuelve el scroll al body
+  };
 
   cartBtn?.addEventListener("click", openCart);
   closeCartBtn?.addEventListener("click", closeCart);
   cartOverlay?.addEventListener("click", closeCart);
-    
+
   cartBtn?.addEventListener("click", () => {
     cartModal.classList.add("open");
     renderCartItems(); // Refrescamos la lista cada vez que se abre
