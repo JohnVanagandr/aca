@@ -5,7 +5,7 @@ export const Footer = (title) => {
       <div class="footer-content">
         <div class="footer-section">
           <h3>${title}</h3>
-          <p>Formando el talento técnico del futuro en desarrollo web.</p>
+          <p>Desarrollo web.</p>
         </div>
         <div class="footer-links">
           <h4>Enlaces Rápidos</h4>
@@ -16,7 +16,7 @@ export const Footer = (title) => {
           </ul>
         </div>
         <div class="footer-copy">
-          <p>&copy; ${year} - Proyecto Vanilla + Vite</p>
+          <p>&copy; ${year} - ACA</p>
         </div>
       </div>
     </footer>
