@@ -1,0 +1,29 @@
+:root {
+  --primary: #2563eb;
+  --secondary: #64748b;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+#loader {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 50px;
+  color: var(--secondary);
+}

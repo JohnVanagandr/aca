@@ -1,0 +1,7 @@
+/* Importación por capas */
+@import './styles/base.css';
+@import './styles/header.css';
+@import './styles/footer.css';
+@import './styles/btn-scroll-top.css';
+@import './styles/products.css';
+@import './styles/cart-modal.css';
