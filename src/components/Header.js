@@ -1,21 +1,34 @@
-import { CartIcon } from "./Cart.js";
+import { AuthService } from '../services/authService.js';
 
-export const Header = (cartCount = 0) => {
+export const Header = (cartCount) => {
+  const user = AuthService.getUser();
+  const isAuth = AuthService.isAuthenticated();
+
   return `
     <header class="main-header">
       <div class="header-container">
-        <div class="logo">
-          <h1>ACA</h1>
-        </div>
-        <nav class="main-nav">
-          <ul>
-            <li><a href="#home">Inicio</a></li>
-            <li><a href="#productos">Productos</a></li>
-          </ul>
+        <a href="#/" class="logo">SENA <span>Store</span></a>
+
+        <nav class="header-nav">
+          <div class="cart-icon-container">
+            <span id="cart-count">${cartCount}</span>
+            🛒
+          </div>
+
+          <div class="auth-menu">
+            ${isAuth ? `
+              <div class="user-profile">
+                <span>Hola, <strong>${user.name}</strong></span>
+                <div class="dropdown-content">
+                  <a href="#/admin/productos">⚙️ Administrar</a>
+                  <button id="btn-logout" class="logout-link">Cerrar Sesión</button>
+                </div>
+              </div>
+            ` : `
+              <a href="#/login" class="btn-login">Iniciar Sesión</a>
+            `}
+          </div>
         </nav>
-        <div id="cart-wrapper">
-          ${CartIcon(cartCount)}
-        </div>
       </div>
     </header>
   `;

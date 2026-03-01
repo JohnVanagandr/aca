@@ -58,3 +58,54 @@
   border-radius: 50%;
   font-weight: bold;
 }
+
+.user-profile {
+  position: relative;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.user-profile:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a,
+.dropdown-content button {
+  display: block;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+  background-color: #f8fafc;
+  color: var(--primary);
+}
+
+.logout-link {
+  border-top: 1px solid #f1f5f9 !important;
+  color: #e53e3e !important;
+}

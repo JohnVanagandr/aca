@@ -1,7 +1,26 @@
 /* Importación por capas */
-@import './styles/base.css';
-@import './styles/header.css';
-@import './styles/footer.css';
-@import './styles/btn-scroll-top.css';
-@import './styles/products.css';
-@import './styles/cart-modal.css';
+@import "./styles/base.css";
+@import "./styles/header.css";
+@import "./styles/footer.css";
+@import "./styles/btn-scroll-top.css";
+@import "./styles/products.css";
+@import "./styles/cart-modal.css";
+@import "./styles/product-detail.css";
+@import "./styles/checkout.css";
+@import "./styles/admin.css";
+@import "./styles/admin-table.css";
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

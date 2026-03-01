@@ -148,17 +148,53 @@
 }
 
 .btn-checkout {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--primary);
+  display: block;
+  text-align: center;
+  text-decoration: none; /* Vital para que no parezca un link azul */
+  background: var(--primary);
   color: white;
-  border: none;
+  padding: 1rem;
   border-radius: 8px;
   font-weight: bold;
-  cursor: pointer;
-  transition: opacity 0.3s;
+  transition: background 0.3s ease;
 }
 
 .btn-checkout:hover {
-  opacity: 0.9;
+  background: #1d4ed8;
+  color: white; /* Evita cambios de color al hacer hover */
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  background: #f1f5f9;
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.btn-qty {
+  background: white;
+  border: 1px solid #e2e8f0;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.btn-qty:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.qty-number {
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
 }

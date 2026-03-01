@@ -14,9 +14,9 @@ export const CartModal = () => {
         <footer class="cart-modal-footer">
           <div class="cart-total">
             <span>Total estimado:</span>
-            <span id="cart-total-amount">$0</span>
+            <span id="cart-total">$0</span>
           </div>
-          <button class="btn-checkout">Continuar al pago</button>
+          <a href="#/checkout" class="btn-checkout">Continuar al pago</a>
         </footer>
       </div>
     </div>
