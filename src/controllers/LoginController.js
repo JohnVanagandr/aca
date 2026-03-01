@@ -1,28 +1,12 @@
+import { LoginView } from '../views/LoginView.js';
 import { AuthService } from '../services/authService.js';
 
 export const LoginController = {
-  render: () => `
-    <div class="admin-form-container fade-in">
-      <div class="form-header">
-        <h1>Bienvenido Instructor</h1>
-        <p>Ingresa para gestionar la tienda</p>
-      </div>
-      <form id="login-form" class="admin-form">
-        <div class="form-group">
-          <label>Correo Electrónico</label>
-          <input type="email" name="email" value="instructor@sena.edu.co" required>
-        </div>
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input type="password" name="password" placeholder="admin123" required>
-        </div>
-        <button type="submit" class="btn-save">Entrar al Panel</button>
-      </form>
-      <p class="form-footer">
-        ¿Eres nuevo aprendiz? <a href="#/register">Crea tu cuenta aquí</a>
-      </p>
-    </div>
-  `,
+  // 1. Delegamos el diseño a la Vista
+  render: () => {
+    return LoginView();
+  },
+  
   init: () => {
     const form = document.querySelector('#login-form');
     form?.addEventListener('submit', (e) => {

@@ -1,10 +1,14 @@
-import { AdminProductTable } from '../components/AdminProductTable.js';
+import { AdminProductListView } from '../views/AdminProductListView.js';
 import { ProductService } from '../services/productService.js';
 import { handleRouting } from '../router.js';
 
 export const AdminProductController = {
-  render: (allProducts) => {
-    return AdminProductTable(allProducts);
+  render: async () => {
+    // 1. Pedimos los datos al modelo (Servicio)
+    const products = await ProductService.getAll();
+
+    // 2. Pasamos los datos a la Vista
+    return AdminProductListView(products);
   },
 
   init: (allProducts) => {

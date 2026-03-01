@@ -44,6 +44,20 @@ export const ProductService = {
   },
 
   /**
+     * Busca un producto específico por su ID
+     */
+  getById: async (id) => {
+    // 1. Traemos todo el catálogo
+    const products = await ProductService.getAll();
+
+    // 2. Buscamos la coincidencia exacta asegurando el tipo de dato
+    const foundProduct = products.find(product => product.id === Number(id));
+
+    // 3. Retornamos el producto, o null si alguien inventó un ID en la URL
+    return foundProduct || null;
+  },
+
+  /**
    * Limpia el almacenamiento para forzar una nueva carga desde la API.
    */
   reset: () => {
