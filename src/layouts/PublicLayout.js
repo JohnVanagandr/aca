@@ -14,7 +14,7 @@ export const PublicLayout = (viewContent) => {
     <div id="public-container" class="fade-in">
       ${viewContent}
     </div>
-    ${Footer()}
+    ${Footer("ACA")}
     ${CartModal()}
     ${ScrollTop()}
   `;
