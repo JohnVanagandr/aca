@@ -23,7 +23,7 @@ const matchRoute = (routePath, currentHash) => {
   return isMatch ? params : null;
 };
 
-export const handleRouting = (allProducts) => {
+export const handleRouting = async (allProducts) => {
   const currentHash = window.location.hash || '#/';
   let matchedRoute = null;
   let params = {};
@@ -46,7 +46,7 @@ export const handleRouting = (allProducts) => {
     }
 
     // 3. Renderizado
-    const viewContent = matchedRoute.controller.render(allProducts, params);
+    const viewContent = await matchedRoute.controller.render(allProducts, params);
     render('#app', matchedRoute.layout(viewContent));
 
     // 4. Inicialización de la lógica del controlador

@@ -1,4 +1,4 @@
-export const AdminProductTable = (products) => {
+export const AdminProductListView = (products) => {
   return `
     <div class="admin-table-container fade-in">
       <div class="admin-table-header">

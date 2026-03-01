@@ -1,8 +1,4 @@
-/**
- * Genera el formulario de administración.
- * @param {Object|null} product - Si se pasa un producto, el formulario entra en modo edición.
- */
-export const AdminProductForm = (product = null) => {
+export const AdminFormView = (product = null) => {
   // Determinamos si es creación o edición para el título
   const title = product ? 'Editar Producto' : 'Añadir Nuevo Producto';
   const buttonText = product ? 'Guardar Cambios' : 'Crear Producto';

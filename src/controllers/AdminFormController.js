@@ -1,9 +1,17 @@
-import { AdminProductForm } from '../components/AdminProductForm.js';
-import { validate } from '../utils/validator.js';
+import { AdminFormView } from '../views/AdminFormView.js';
 
 export const AdminFormController = {
-  // 1. Qué se muestra
-  render: () => AdminProductForm(),
+  // params vendrá del router si estamos en la ruta de edición (ej: params.id)
+  render: async (params) => {
+    let product = null;
+
+    // Si la URL trae un ID, buscamos el producto para editar
+    if (params && params.id) {
+      product = await ProductService.getById(Number(params.id));
+    }
+
+    return AdminFormView(product);
+  },
 
   // 2. Reglas específicas para esta vista
   validationRules: {
@@ -31,27 +39,32 @@ export const AdminFormController = {
 
     if (!form) return;
 
-    form.onsubmit = (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
+
       const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
+      const data = {
+        name: formData.get('name'),
+        price: Number(formData.get('price')),
+        image: formData.get('image'),
+        category: formData.get('category')
+      };
 
-      const result = validate(data, AdminFormController.validationRules);
+      const id = formData.get('id');
 
-      if (!result.isValid) {
-        alert("Errores:\n" + Object.values(result.errors).join("\n"));
-        return;
+      if (id) {
+        // Modo Edición
+        await ProductService.update(Number(id), data);
+        alert('Producto actualizado con éxito');
+      } else {
+        // Modo Creación
+        await ProductService.create(data);
+        alert('Producto creado con éxito');
       }
 
-      // Lógica de guardado
-      const newProduct = {
-        ...data,
-        id: allProducts.length + 1,
-        price: parseFloat(data.price)
-      };
-      allProducts.push(newProduct);
+      // Redirigimos al inventario
       window.location.hash = '#/admin/productos';
-    };
+    });
   },
 
   showErrors: (errors) => {

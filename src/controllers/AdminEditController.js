@@ -1,33 +1,43 @@
-// src/controllers/AdminEditController.js
-import { AdminProductForm } from '../components/AdminProductForm.js';
-import { validate } from '../utils/validator.js';
+import { AdminFormView } from '../views/AdminFormView.js';
+import { ProductService } from '../services/productService.js';
 
 export const AdminEditController = {
-  render: (allProducts, params) => {
-    const product = allProducts.find(p => p.id == params.id);
-    // Pasamos el producto al formulario para que se auto-llene
-    return AdminProductForm(product);
+  render: async (allProducts, params) => {
+    const productId = Number(params.id);
+    const product = await ProductService.getById(productId);
+
+    if (!product) {
+      alert('Producto no encontrado');
+      window.location.hash = '#/admin/productos';
+      return '';
+    }
+
+    return AdminFormView(product);
   },
 
+  // Mantenemos la firma por si el router pasa allProducts, 
+  // pero ya no lo manipularemos directamente
   init: (allProducts, params) => {
     const form = document.querySelector('#product-form');
 
-    form?.addEventListener('submit', (e) => {
+    // Agregamos 'async' aquí porque el ProductService usa promesas
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const updatedData = Object.fromEntries(formData.entries());
 
-      // 1. Validar (reutilizando el helper)
-      // ... (lógica de validación igual al de creación)
-
-      // 2. Actualizar el producto en el array global
-      const index = allProducts.findIndex(p => p.id == params.id);
-      allProducts[index] = {
-        ...allProducts[index],
-        ...updatedData,
-        price: parseFloat(updatedData.price)
+      // 1. Extraemos y formateamos los datos limpios
+      const updatedData = {
+        name: formData.get('name'),
+        price: parseFloat(formData.get('price')),
+        image: formData.get('image'),
+        category: formData.get('category')
       };
 
+      // 2. LA SOLUCIÓN: Llamamos al servicio para que él haga el guardado real en LocalStorage
+      await ProductService.update(Number(params.id), updatedData);
+
+      // 3. Feedback visual y redirección
+      alert('✅ Producto actualizado correctamente');
       window.location.hash = '#/admin/productos';
     });
   }
