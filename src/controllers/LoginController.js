@@ -18,6 +18,9 @@ export const LoginController = {
         </div>
         <button type="submit" class="btn-save">Entrar al Panel</button>
       </form>
+      <p class="form-footer">
+        ¿Eres nuevo aprendiz? <a href="#/register">Crea tu cuenta aquí</a>
+      </p>
     </div>
   `,
   init: () => {

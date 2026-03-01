@@ -26,6 +26,7 @@ export const Header = (cartCount) => {
               </div>
             ` : `
               <a href="#/login" class="btn-login">Iniciar Sesión</a>
+              <a href="#/register" class="btn-register-header">Registrarme</a>
             `}
           </div>
         </nav>

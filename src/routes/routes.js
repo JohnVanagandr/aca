@@ -8,6 +8,7 @@ import { AdminProductController } from '../controllers/AdminProductController.js
 import { AdminFormController } from '../controllers/AdminFormController.js';
 import { AdminEditController } from '../controllers/AdminEditController.js';
 import { CheckoutController } from '../controllers/CheckoutController.js';
+import { RegisterController } from '../controllers/RegisterController.js';
 
 export const routes = [
   { path: '#/', layout: PublicLayout, controller: HomeController },
@@ -25,5 +26,10 @@ export const routes = [
     path: '#/checkout',
     layout: PublicLayout,
     controller: CheckoutController
+  },
+  {
+    path: '#/register',
+    layout: PublicLayout,
+    controller: RegisterController
   }
 ];
