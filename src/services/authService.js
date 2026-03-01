@@ -1,3 +1,4 @@
+import { UserService } from './userService.js';
 const AUTH_KEY = 'sena_auth_user';
 
 export const AuthService = {
@@ -17,7 +18,16 @@ export const AuthService = {
       return { success: true, user };
     }
 
-    return { success: false, message: 'Credenciales incorrectas' };
+    // 3. UNIFICACIÓN: Validar contra nuestra "Base de Datos" de clientes
+    const users = UserService.getAll();
+    const foundUser = users.find(u => u.email === email && u.password === password);
+
+    if (foundUser) {
+      localStorage.setItem(AUTH_KEY, JSON.stringify(foundUser));
+      return { success: true, user: foundUser };
+    }
+
+    return { success: false, message: 'Credenciales inválidas' };
   },
 
   logout: () => {
